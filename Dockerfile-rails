@@ -1,0 +1,17 @@
+FROM graalvm:latest
+  
+ENV BUNDLE_SILENCE_ROOT_WARNING=1
+
+RUN yum -y install git libxml2-devel libxslt-devel sqlite-devel mysql-devel postgresql-devel time
+
+RUN gu install ruby
+
+RUN ruby --version
+ARG GRAAL_VERSION=20.1.0-dev
+RUN ls $JAVA_HOME
+RUN /opt/graalvm-ce-java8-$GRAAL_VERSION/jre/languages/ruby/lib/truffle/post_install_hook.sh
+
+#RUN env time gem install nokogiri:1.10.7 nio4r:2.5.2 websocket-driver:0.7.1
+#COPY bundle /opt/graalvm-ce-java8-$GRAAL_VERSION/bin
+COPY Gemfile .
+RUN env time bundle install 
