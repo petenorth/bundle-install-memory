@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - install python modules
+    - name: install python modules
       run: pip install requests
     - name: Build the GraalVM Docker image
       run: docker build . --file Dockerfile-graalvm --build-arg BUILD_ID=$(python get_latest.py 20.1.0-dev)--tag graalvm:latest
