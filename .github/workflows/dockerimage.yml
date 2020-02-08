@@ -1,5 +1,8 @@
 name: Docker Image CI
 
+env:
+  GRAAL_VERSION: 20.1.0-dev
+
 on: [push]
 
 jobs:
@@ -13,6 +16,6 @@ jobs:
     - name: install python modules
       run: pip install requests
     - name: Build the GraalVM Docker image
-      run: docker build . --file Dockerfile-graalvm --build-arg BUILD_ID=$(python get_latest.py 20.1.0-dev) --tag graalvm:latest
+      run: docker build . --file Dockerfile-graalvm --build-arg GRAAL_VERSION=$GRAAL_VERSION --build-arg BUILD_ID=$(python get_latest.py $GRAAL_VERSION) --tag graalvm:latest
     - name: Build the Rails Docker image
       run: docker build . --file Dockerfile-rails --tag rails:latest
