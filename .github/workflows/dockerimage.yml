@@ -1,0 +1,16 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the GraalVM Docker image
+      run: docker build . --file Dockerfile-graalvm --tag graalvm:latest
+    - name: Build the Rails Docker image
+      run: docker build . --file Dockerfile-rails --tag rails:latest
