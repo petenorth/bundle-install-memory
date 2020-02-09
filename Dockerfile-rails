@@ -4,11 +4,11 @@ ENV BUNDLE_SILENCE_ROOT_WARNING=1
 
 RUN yum -y install git libxml2-devel libxslt-devel sqlite-devel mysql-devel postgresql-devel time
 
-RUN echo $GRAAL_VERSION
-RUN echo $BUILD_ID
+RUN gu install llvm-toolchain
 
-RUN curl -L https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/$GRAAL_VERSION-$BUILD_ID/llvm-toolchain-installable-java8-linux-amd64-$GRAAL_VERSION.jar -O
-RUN gu -L install llvm-toolchain-installable-java8-linux-amd64-$GRAAL_VERSION.jar
+#RUN curl -L https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/$GRAAL_VERSION-$BUILD_ID/truffleruby-$GRAAL_VERSION-linux-amd64.tar.gz | tar xz
+#ENV PATH="/truffleruby-$GRAAL_VERSION-linux-amd64/bin:$PATH"
+#RUN "/truffleruby-$GRAAL_VERSION-linux-amd64/lib/truffle/post_install_hook.sh"
 
 RUN curl -L https://github.com/ruby/truffleruby-dev-builder/releases/latest/download/truffleruby-head-ubuntu-18.04.tar.gz | tar xz
 ENV PATH="/truffleruby-head/bin:$PATH"
