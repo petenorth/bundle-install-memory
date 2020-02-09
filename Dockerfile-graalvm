@@ -12,7 +12,9 @@ ARG GRAAL_VERSION=20.1.0-dev
 ARG BUILD_ID=20200204_0342
 ENV LANG=en_US.UTF-8
 
-ENV GRAALVM_PKG=https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/$GRAAL_VERSION-$BUILD_ID/graalvm-ce-java8-linux-amd64-$GRAAL_VERSION.tar.gz \
+ENV GRAAL_VERSION=$GRAAL_VERSION \
+    BUILD_ID=$BUILD_ID \
+    GRAALVM_PKG=https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/$GRAAL_VERSION-$BUILD_ID/graalvm-ce-java8-linux-amd64-$GRAAL_VERSION.tar.gz \
     JAVA_HOME=/opt/graalvm-ce-java8-$GRAAL_VERSION/ \
     PATH=$PATH:/opt/rh/llvm-toolset-7/root/usr/bin \
     LD_LIBRARY_PATH=/opt/rh/llvm-toolset-7/root/usr/lib64 \

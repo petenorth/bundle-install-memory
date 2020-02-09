@@ -4,18 +4,22 @@ ENV BUNDLE_SILENCE_ROOT_WARNING=1
 
 RUN yum -y install git libxml2-devel libxslt-devel sqlite-devel mysql-devel postgresql-devel time
 
-RUN gu install ruby
+RUN echo $GRAAL_VERSION
+RUN echo $BUILD_ID
 
+RUN curl -L https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/$GRAAL_VERSION-$BUILD_ID/llvm-toolchain-installable-java8-linux-amd64-$GRAAL_VERSION.jar -O
+RUN gu -L install llvm-toolchain-installable-java8-linux-amd64-$GRAAL_VERSION.jar
+
+RUN curl -L https://github.com/ruby/truffleruby-dev-builder/releases/latest/download/truffleruby-head-ubuntu-18.04.tar.gz | tar xz
+ENV PATH="/truffleruby-head/bin:$PATH"
+RUN "/truffleruby-head/lib/truffle/post_install_hook.sh"
+RUN which ruby
 RUN ruby --version
-ARG GRAAL_VERSION=20.1.0-dev
-RUN ls $JAVA_HOME
-RUN /opt/graalvm-ce-java8-$GRAAL_VERSION/jre/languages/ruby/lib/truffle/post_install_hook.sh
 
-#COPY bundle /opt/graalvm-ce-java8-$GRAAL_VERSION/bin
 COPY Gemfile .
 
 RUN free -h
 RUN ruby --vm.XX:+PrintGCSummary -e0
 RUN ruby --vm.XX:+PrintGCSummary -S bundle --version
-#RUN env time bundle install 
+#RUN env time bundle install
 RUN env time ruby --experimental-options --engine.Inlining=false --vm.Xmn256m --vm.Xmx3g  --vm.XX:+PrintGCSummary -S bundle install  
