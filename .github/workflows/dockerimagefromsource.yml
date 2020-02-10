@@ -1,0 +1,17 @@
+name: Docker Image CI
+
+env:
+  GRAAL_VERSION: 20.1.0-dev
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build truffleruby native from source
+      run: docker build . --file Dockerfile-source --tag truffleruby:latest
