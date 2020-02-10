@@ -7,3 +7,7 @@ RUN echo -e '#!/bin/bash\n/usr/local/bin/ruby /truffleruby/tool/jt.rb' > /usr/bi
     chmod +x /usr/bin/jt
 
 RUN ruby tool/jt.rb build --env native
+
+RUN ls -l mxbuild/truffleruby-native
+
+RUN ruby tool/jt.rb ruby --version
