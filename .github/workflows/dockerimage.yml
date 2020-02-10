@@ -19,7 +19,9 @@ jobs:
       with:
         ruby-version: truffleruby-head
     - run: ruby -v
-    - name: Build the GraalVM Docker image
+    - name: Build truffleruby native from source
+      run: docker build . --file Dockerfile-source --tag truffleruby:latest
+    - name: Build the GraalVM Docker image (from latest dev release
       run: docker build . --file Dockerfile-graalvm --build-arg GRAAL_VERSION=$GRAAL_VERSION --build-arg BUILD_ID=$(python get_latest.py $GRAAL_VERSION) --tag graalvm:latest
     - name: Build the Rails Docker image
       run: docker build . --file Dockerfile-rails --tag rails:latest
