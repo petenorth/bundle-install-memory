@@ -9,5 +9,5 @@ RUN echo -e '#!/bin/bash\n/usr/local/bin/ruby /truffleruby/tool/jt.rb' > /usr/bi
 RUN ruby tool/jt.rb build --env native
 
 RUN ls -l mxbuild/truffleruby-native
-
-RUN ruby tool/jt.rb ruby --version
+RUN ls -l mxbuild/truffleruby-native/bin
+RUN ruby tool/jt.rb --use native ruby --version
