@@ -13,8 +13,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: install python modules
-      run: pip install requests
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: truffleruby-head

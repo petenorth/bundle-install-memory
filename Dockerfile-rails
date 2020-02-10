@@ -1,14 +1,10 @@
 FROM ubuntu:18.04
-  
+
+ENV LANG=en_US.UTF-8  
 ENV BUNDLE_SILENCE_ROOT_WARNING=1
 
-#RUN yum -y install git libxml2-devel libxslt-devel sqlite-devel mysql-devel postgresql-devel time
-
-#RUN gu install llvm-toolchain
-
-#RUN curl -L https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/$GRAAL_VERSION-$BUILD_ID/truffleruby-$GRAAL_VERSION-linux-amd64.tar.gz | tar xz
-#ENV PATH="/truffleruby-$GRAAL_VERSION-linux-amd64/bin:$PATH"
-#RUN "/truffleruby-$GRAAL_VERSION-linux-amd64/lib/truffle/post_install_hook.sh"
+RUN  apt-get update 
+RUN  apt-get -y install tar curl make gcc libssl-dev time libxml2-dev libxslt-dev
 
 RUN curl -L https://github.com/ruby/truffleruby-dev-builder/releases/latest/download/truffleruby-head-ubuntu-18.04.tar.gz | tar xz
 ENV PATH="/truffleruby-head/lib/llvm-toolchain/bin:/truffleruby-head/bin:$PATH"
@@ -21,5 +17,9 @@ COPY Gemfile .
 RUN free -h
 RUN ruby --vm.XX:+PrintGCSummary -e0
 RUN ruby --vm.XX:+PrintGCSummary -S bundle --version
+
+RUN apt-get install -y locales
+RUN locale-gen en_US.UTF-8
+
 #RUN env time bundle install
 RUN env time ruby --experimental-options --engine.Inlining=false --vm.Xmn256m --vm.Xmx3g  --vm.XX:+PrintGCSummary -S bundle install  
