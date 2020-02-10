@@ -1,8 +1,8 @@
-FROM graalvm:latest
+FROM ubuntu:18.04
   
 ENV BUNDLE_SILENCE_ROOT_WARNING=1
 
-RUN yum -y install git libxml2-devel libxslt-devel sqlite-devel mysql-devel postgresql-devel time
+#RUN yum -y install git libxml2-devel libxslt-devel sqlite-devel mysql-devel postgresql-devel time
 
 #RUN gu install llvm-toolchain
 
