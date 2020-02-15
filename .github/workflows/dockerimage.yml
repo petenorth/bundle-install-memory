@@ -24,4 +24,6 @@ jobs:
         ruby-version: truffleruby-head
     - run: ruby -v
     - name: Build the Rails Docker image
-      run: docker build . --file Dockerfile-rails --tag rails:latest
+      run: docker build . --file Dockerfile-rails-truffleruby --tag rails-truffleruby:latest
+    - name: Build the Rails Docker image
+      run: docker build . --file Dockerfile-rails-mri --tag rails-mri:latest
