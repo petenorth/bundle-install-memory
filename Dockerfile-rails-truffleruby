@@ -6,7 +6,7 @@ ENV BUNDLE_SILENCE_ROOT_WARNING=1
 RUN  apt-get update 
 RUN  apt-get -y install tar curl make gcc libssl-dev time libxml2-dev libxslt-dev
 
-RUN curl -L https://github.com/ruby/truffleruby-dev-builder/releases/download/builds-20200217-190341/truffleruby-head-ubuntu-18.04.tar.gz | tar xz
+RUN curl -L https://github.com/ruby/truffleruby-dev-builder/releases/download/builds-20200218-190334/truffleruby-head-ubuntu-18.04.tar.gz | tar xz
 #RUN curl -L https://github.com/ruby/truffleruby-dev-builder/releases/latest/download/truffleruby-head-ubuntu-18.04.tar.gz | tar xz
 ENV PATH="/truffleruby-head/lib/llvm-toolchain/bin:/truffleruby-head/bin:$PATH"
 RUN "/truffleruby-head/lib/truffle/post_install_hook.sh"
