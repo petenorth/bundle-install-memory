@@ -22,6 +22,6 @@ RUN ruby --vm.XX:+PrintGCSummary -S bundle --version
 RUN apt-get install -y locales
 RUN locale-gen en_US.UTF-8
 
-RUN env time bundle update --all
+RUN env time bundle lock
 RUN env time bundle install
 #RUN env time ruby --experimental-options --engine.Inlining=false --vm.Xmn256m --vm.Xmx3g  --vm.XX:+PrintGCSummary -S bundle install  
