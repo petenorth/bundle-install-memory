@@ -13,7 +13,7 @@ RUN "/truffleruby-head/lib/truffle/post_install_hook.sh"
 RUN which ruby
 RUN ruby --version
 
-COPY Gemfile  /
+COPY Gemfile Gemfile.lock  /
 
 RUN free -h
 RUN ruby --vm.XX:+PrintGCSummary -e0
