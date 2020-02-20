@@ -8,8 +8,9 @@ RUN  apt-get -y install tar curl make gcc libssl-dev time libxml2-dev libxslt-de
 RUN which ruby
 RUN ruby --version
 
-COPY Gemfile .
+COPY Gemfile Gemfile.lock /
 
 RUN free -h
 
+RUN env time bundle lock
 RUN env time bundle install
