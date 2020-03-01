@@ -14,5 +14,6 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: truffleruby-head
+    - run: sudo apt-get install libsqlite3-dev libxml2-dev libxslt-dev
     - run: gem install actionview -v 5.2.4.1
     - run: ruby -e "require 'action_view'; puts ActionView::Helpers.number_to_currency(123.45)"
