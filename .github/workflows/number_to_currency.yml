@@ -14,4 +14,4 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: truffleruby-head
-    - run: ruby -e "include ActionView::Helpers; put number_to_currency(123.45)"
+    - run: ruby -e "puts ActionView::Helpers::number_to_currency(123.45)"
