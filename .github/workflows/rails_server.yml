@@ -22,8 +22,8 @@ jobs:
     - run: rails new blog
     - run: cd blog
     - run: rails server -d
-    - run |
-        set -B                  # enable brace expansion
+    - run: |
+        set -B # enable brace expansion
         for i in {1..10}; do
           curl http://localhost:3000
           sleep 60
