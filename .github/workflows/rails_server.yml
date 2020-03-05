@@ -18,8 +18,9 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - run: sudo apt-get update
     - run: sudo apt-get install libsqlite3-dev libxml2-dev libxslt-dev
+    - run: bundle version
     - run: gem install rails
-    - run: rails new blog
+    - run: bundle exec rails new blog
     - run: cd blog
     - run: rails server -d
     - run: |
