@@ -20,7 +20,9 @@ jobs:
     - run: sudo apt-get install libsqlite3-dev libxml2-dev libxslt-dev
     - run: bundle version
     - run: gem install rails
-    - run: bundle exec rails new blog
+    - run: which rails
+    - run: rails -v
+    - run: rails new blog
     - run: cd blog
     - run: rails server -d
     - run: |
