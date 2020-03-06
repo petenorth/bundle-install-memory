@@ -19,4 +19,4 @@ jobs:
     - run: sudo apt-get update
     - run: sudo apt-get install libsqlite3-dev libxml2-dev libxslt-dev
     - run: gem install actionview -v 5.2.4.1
-    - run: ruby -e "required 'active_record';require 'action_view'; include ActionView::Helpers::NumberHelper; puts number_to_currency(444.44,unit:'£',raise:true)"
+    - run: ruby -e "require 'active_record';require 'action_view'; include ActionView::Helpers::NumberHelper; puts number_to_currency(444.44,unit:'£',raise:true)"
