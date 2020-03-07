@@ -28,7 +28,7 @@ jobs:
     - run: sleep 10
     - run: ls -l log  
       working-directory: ./blog   
-    - run: tail -f log/development.log
+    - run: cat log/development.log
       working-directory: ./blog
     - run: |
         set -B # enable brace expansion
