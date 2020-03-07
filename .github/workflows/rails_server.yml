@@ -23,12 +23,9 @@ jobs:
     - run: which rails
     - run: rails -v
     - run: rails new blog
-    - run: cd blog
-    - run: rails server -d
-    - run: ls -l 
-    - run: ls -l log
+    - run: cd blog && rails server -d
     - run: sleep 10
-    - run: ls -l 
+    - run: ls -l blog
     - run: ls -l log     
     - run: tail -f log/development.log
     - run: |
