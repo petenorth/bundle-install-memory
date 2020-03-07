@@ -40,4 +40,4 @@ jobs:
           curl http://localhost:3000
           sleep 60
         done
-    - run: kill -ARLM $(cat tmp/pids/server.pid)
+    - run: kill -ALRM $(cat tmp/pids/server.pid)
