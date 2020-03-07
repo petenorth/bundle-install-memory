@@ -24,7 +24,8 @@ jobs:
     - run: rails -v
     - run: rails new blog
     - run: cd blog
-    - run: rails server 
+    - run: rails server -d
+    - run: tail -f development.log
     - run: |
         set -B # enable brace expansion
         for i in {1..10}; do
