@@ -25,6 +25,11 @@ jobs:
     - run: rails new blog
     - run: cd blog
     - run: rails server -d
+    - run: ls -l 
+    - run: ls -l log
+    - run: sleep 10
+    - run: ls -l 
+    - run: ls -l log     
     - run: tail -f log/development.log
     - run: |
         set -B # enable brace expansion
