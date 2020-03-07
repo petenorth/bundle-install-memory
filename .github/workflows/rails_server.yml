@@ -23,7 +23,7 @@ jobs:
     - run: which rails
     - run: rails -v
     - run: rails new blog
-    - run: rails server
+    - run: rails server &
       working-directory: ./blog
     - run: sleep 10
     - run: ls -l log  
