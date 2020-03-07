@@ -28,9 +28,11 @@ jobs:
     - run: sleep 10
     - run: ls -l log  
       working-directory: ./blog   
-    - run: cat log/development.log
+    - name: wait until server starts
+      run: until cat log/development.log | grep -m 1 "Listening" || [ $WAIT_COUNT -eq 48 ]; do echo "WAIT COUNT $(( WAIT_COUNT++ ))" && sleep 5 ; done
       working-directory: ./blog
-    - run: |
+    - name: make a request each minute for 10 minutes
+      run: |
         set -B # enable brace expansion
         for i in {1..10}; do
           curl http://localhost:3000
