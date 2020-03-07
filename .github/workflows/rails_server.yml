@@ -23,7 +23,7 @@ jobs:
     - run: which rails
     - run: rails -v
     - run: rails new blog
-    - run: rails server -d
+    - run: WEB_CONCURRENCY=1 rails server -d
       working-directory: ./blog
     - run: sleep 10
     - run: ls -l log  
