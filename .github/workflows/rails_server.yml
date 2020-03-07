@@ -41,3 +41,4 @@ jobs:
           sleep 60
         done
     - run: kill -ALRM $(cat tmp/pids/server.pid)
+      working-directory: ./blog
