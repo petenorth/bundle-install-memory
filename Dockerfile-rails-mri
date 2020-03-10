@@ -12,5 +12,6 @@ COPY Gemfile Gemfile.lock /
 
 RUN free -h
 
+RUN locale
 RUN env time bundle lock
 RUN env time bundle install
