@@ -20,6 +20,7 @@ jobs:
     - run: sudo apt-get install libsqlite3-dev libxml2-dev libxslt-dev
     - run: bundle version
     - run: gem install rails
+    - run: locale
     - run: which rails
     - run: rails -v
     - run: rails new blog
