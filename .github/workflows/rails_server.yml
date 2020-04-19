@@ -20,12 +20,20 @@ jobs:
     - run: sudo apt-get install libsqlite3-dev libxml2-dev libxslt-dev
     - run: bundle version
     - run: gem install rails
+      env:
+        RUBYOPT: '--experimental-options --engine.Mode=latency'
     - run: locale
     - run: which rails
     - run: rails -v
+      env:
+        RUBYOPT: '--experimental-options --engine.Mode=latency'
     - run: rails new blog
+      env:
+        RUBYOPT: '--experimental-options --engine.Mode=latency'
     - run: rails server &
-      working-directory: ./blog   
+      working-directory: ./blog
+      env:
+        RUBYOPT: '--experimental-options --engine.Mode=latency'
     - name: wait until server starts
       run: |
         WAIT_COUNT=0 
